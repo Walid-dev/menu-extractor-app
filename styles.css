@@ -1,15 +1,27 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #232533c2;
 }
 
-#headoffice-id {
-    margin: 1em 0;
+.app-container {
+    display: flex;
+    color: #fff;
+    align-items: center;
+    min-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#headoffice-id,
+#prefix {
+    margin: .6em 0;
     padding: 0.5em;
     font-size: 1em;
 }
 
 #submit-button {
     padding: 0.5em 1em;
+    margin: 1em 0;
     font-size: 1em;
     background-color: #008CBA; /* Lovely blue */
     color: white;
@@ -17,11 +29,42 @@ body {
     cursor: pointer;
 }
 
+#fetch-button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: #18637c;
+    /* Lovely blue */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
 #submit-button:hover {
     background-color: #007B9A; /* Darker blue on hover */
 }
 
 #result {
-    margin-top: 2em;
-    font-size: 1.2em;
+    display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        max-height: 50vh;
+    
+    }
+    
+    
+    #result p {
+        background: #1589b0;
+        padding: 6px;
+        margin: 8px;
+        text-transform: capitalize;
+    }
+    
+    
+    #menu-list {
+        cursor: pointer;
+}
+
+#menu-list p:hover {
+    color: #008CBA;
+    font-size: 16px;
+    font-weight: bold;
 }
