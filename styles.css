@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 body {
-    font-family: Arial, sans-serif;
+font-family: 'Open Sans', sans-serif;
     background-color: #232533c2;
 }
 
@@ -44,15 +45,16 @@ body {
 
 #result {
     display: flex;
-        flex-direction: column;
+    max-width: 40%;
         flex-wrap: wrap;
         max-height: 50vh;
     
     }
     
     
-    #result p {
-        background: #1589b0;
+#result ul li {
+    list-style-type: none;
+    background: #1589b0;
         padding: 6px;
         margin: 8px;
         text-transform: capitalize;

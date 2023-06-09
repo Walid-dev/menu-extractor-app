@@ -64,20 +64,26 @@ document.getElementById("submit-button").addEventListener("click", () => {
       const modifiers_to_keep = content.modifiers.filter((modifier) => modifier_names_to_keep.includes(modifier.backend_name));
 
       // Display results on the webpage instead of console
-      resultDiv.innerHTML += "<p>Found</p>";
-      resultDiv.innerHTML += `<p>menus: ${content.menus.length}</p>`;
-      resultDiv.innerHTML += `<p>categories: ${content.categories.length}</p>`;
-      resultDiv.innerHTML += `<p>products: ${content.products.length}</p>`;
-      resultDiv.innerHTML += `<p>modifier_groups: ${content.modifier_groups.length}</p>`;
-      resultDiv.innerHTML += `<p>modifiers: ${content.modifiers.length}</p>`;
+      let foundList = document.createElement("ul");
+      foundList.innerHTML += "<li><strong>Found</strong></li>";
+      foundList.innerHTML += `<li>menus: ${content.menus.length}</li>`;
+      foundList.innerHTML += `<li>categories: ${content.categories.length}</li>`;
+      foundList.innerHTML += `<li>products: ${content.products.length}</li>`;
+      foundList.innerHTML += `<li>modifier_groups: ${content.modifier_groups.length}</li>`;
+      foundList.innerHTML += `<li>modifiers: ${content.modifiers.length}</li>`;
 
-      resultDiv.innerHTML += "<p>Extracted</p>";
-      resultDiv.innerHTML += `<p>menus: ${menus_to_keep.length}</p>`;
-      resultDiv.innerHTML += `<p>categories: ${category_names_to_keep.length}</p>`;
-      resultDiv.innerHTML += `<p>products: ${product_names_to_keep.length}</p>`;
-      resultDiv.innerHTML += `<p>modifier_groups: ${modifier_group_names_to_keep.length}</p>`;
-      resultDiv.innerHTML += `<p>modifiers: ${modifier_names_to_keep.length}</p>`;
+      // Create the Extracted list
+      let extractedList = document.createElement("ul");
+      extractedList.innerHTML += "<li><strong>Extracted</strong></li>";
+      extractedList.innerHTML += `<li>menus: ${menus_to_keep.length}</li>`;
+      extractedList.innerHTML += `<li>categories: ${category_names_to_keep.length}</li>`;
+      extractedList.innerHTML += `<li>products: ${product_names_to_keep.length}</li>`;
+      extractedList.innerHTML += `<li>modifier_groups: ${modifier_group_names_to_keep.length}</li>`;
+      extractedList.innerHTML += `<li>modifiers: ${modifier_names_to_keep.length}</li>`;
 
+      // Append the lists to the result div
+      resultDiv.appendChild(foundList);
+      resultDiv.appendChild(extractedList);
       const output = {
         menus: menus_to_keep.map((menu) => ({
           ...menu,
