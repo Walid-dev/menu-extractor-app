@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#headoffice-id {
+    margin: 1em 0;
+    padding: 0.5em;
+    font-size: 1em;
+}
+
+#submit-button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: #008CBA; /* Lovely blue */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#submit-button:hover {
+    background-color: #007B9A; /* Darker blue on hover */
+}
+
+#result {
+    margin-top: 2em;
+    font-size: 1.2em;
+}
