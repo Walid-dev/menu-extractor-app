@@ -1,18 +1,52 @@
-// Fetch API URL - replace XXXX with the headoffice ID from input
 const fetchUrl = "https://www.mobi2go.com/api/1/headoffice/XXXX/menu?export";
-const prefix = "[DD]";
-const prefix_to_delete = ""; // The prefix to delete
+const prefix_to_delete = "";
+
+let selectedMenu = null;
+
+document.getElementById("fetch-button").addEventListener("click", () => {
+  let headofficeId = document.getElementById("headoffice-id").value;
+  let menuListDiv = document.getElementById("menu-list");
+  let errorDiv = document.getElementById("error");
+  menuListDiv.innerHTML = "";
+  errorDiv.innerHTML = "";
+
+  fetch(fetchUrl.replace("XXXX", headofficeId))
+    .then((res) => {
+      if (!res.ok) throw new Error(`API Request failed with status ${res.status}`);
+      return res.json();
+    })
+    .then((content) => {
+      content.menus.forEach((menu, i) => {
+        let menuElement = document.createElement("p");
+        menuElement.textContent = menu.backend_name;
+        menuElement.addEventListener("click", () => {
+          selectedMenu = menu.backend_name;
+          document.getElementById("submit-button").disabled = false;
+          menuListDiv.childNodes.forEach((node) => (node.style.fontWeight = "normal"));
+          menuElement.style.fontWeight = "bold";
+        });
+        menuListDiv.appendChild(menuElement);
+      });
+    })
+    .catch((error) => {
+      errorDiv.innerHTML = `<p>Error: ${error}</p>`;
+    });
+});
 
 document.getElementById("submit-button").addEventListener("click", () => {
   let headofficeId = document.getElementById("headoffice-id").value;
   let resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = ""; // Clear previous results
+  let prefix = document.getElementById("prefix").value;
+  resultDiv.innerHTML = "";
 
   fetch(fetchUrl.replace("XXXX", headofficeId))
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) throw new Error(`API Request failed with status ${res.status}`);
+      return res.json();
+    })
     .then((content) => {
-      // Replace process.argv[3] with the user's input
-      const menus_to_copy = [document.getElementById("menu-name").value];
+      const menus_to_copy = [selectedMenu];
+      // rest of the code as before
 
       const menus_to_keep = content.menus.filter((menu) => menus_to_copy.includes(menu.backend_name));
       const category_names_to_keep = _.union(...menus_to_keep.map((menu) => menu.categories));

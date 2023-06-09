@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Menu Fetch App</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-  </head>
-  <body>
-    <h1>Menu Fetch App</h1>
+</head>
+<body>
+    <div class="app-container">
+        <h1>Menu Fetch App</h1>
 
-    <label for="headoffice-id">Headoffice ID:</label><br />
-    <input type="text" id="headoffice-id" name="headoffice-id" /><br />
+        <label for="headoffice-id">Headoffice ID:</label><br>
+        <input type="text" id="headoffice-id" name="headoffice-id"><br>
 
-    <label for="menu-name">Menu Name:</label><br />
-    <input type="text" id="menu-name" name="menu-name" /><br />
+        <label for="prefix">Prefix:</label><br>
+        <input type="text" id="prefix" name="prefix" value=" [New]"><br>
 
-    <button id="submit-button">Fetch and Process Menu</button>
+        <button id="fetch-button">Fetch Menus</button>
 
-    <div id="result"></div>
+        <div id="menu-list"></div>
+
+        <button id="submit-button" disabled>Duplicate Selected Menu</button>
+
+        <div id="result"></div>
+        <div id="error"></div>
+    </div>
 
     <script src="main.js"></script>
-  </body>
+</body>
 </html>
