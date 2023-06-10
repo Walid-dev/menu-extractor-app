@@ -25,7 +25,7 @@ document.getElementById("fetch-button").addEventListener("click", () => {
           menuListDiv.childNodes.forEach((node) => (node.style.fontWeight = "normal"));
           menuListDiv.childNodes.forEach((node) => (node.style.color = "white"));
           menuElement.style.fontWeight = "bold";
-          menuElement.style.color = "#04f968";
+          menuElement.style.color = "lime";
         });
         menuListDiv.appendChild(menuElement);
       });
@@ -39,6 +39,7 @@ document.getElementById("submit-button").addEventListener("click", () => {
   let headofficeId = document.getElementById("headoffice-id").value;
   let resultDiv = document.getElementById("result");
   let prefix = document.getElementById("prefix").value;
+  let prefix_to_delete = document.getElementById("prefix-to-delete").value;
   resultDiv.innerHTML = "";
 
   fetch(fetchUrl.replace("XXXX", headofficeId))
@@ -117,6 +118,7 @@ document.getElementById("submit-button").addEventListener("click", () => {
       };
 
       let jsonOutputDiv = document.getElementById("json-output");
+      jsonOutputDiv.innerText = "";
       jsonOutputDiv.innerText = JSON.stringify(output, null, 2);
 
       // Call the download function with the JSON output
