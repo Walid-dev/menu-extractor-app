@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>MENU DUPLICATOR APP</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app-container">
-        <div id="fetch-interface">
-            <h1>MENU DUPLICATOR APP</h1>
+      <div id="fetch-interface">
+        <h1>MENU DUPLICATOR APP</h1>
 
-            <label for="headoffice-id">HEADOFFICE ID:</label><br>
-            <input type="text" id="headoffice-id" name="headoffice-id"><br>
-    
-            <label for="prefix">New Prefix:</label><br>
-            <input type="text" id="prefix" name="prefix" value="[New] "><br>
-    
-            <button id="fetch-button">Fetch Menus</button>
-    
-            <div id="menu-list"></div>
-    
-            <button id="submit-button" disabled>Duplicate Selected Menu</button>
-        </div>
-        <div id="result"></div>
+        <label for="headoffice-id">HEADOFFICE ID:</label><br />
+        <input type="text" id="headoffice-id" name="headoffice-id" /><br />
+
+        <label for="prefix">New Prefix:</label><br />
+        <input type="text" id="prefix" name="prefix" value="[New] " /><br />
+
+        <button id="fetch-button">Fetch Menus</button>
+
+        <div id="error"></div>
+
+        <div id="menu-list"></div>
+
+        <button id="submit-button" disabled>Duplicate Selected Menu</button>
+      </div>
+      <div id="result"></div>
     </div>
-    <div id="error"></div>
-
+    <div id="json-container">
+      <pre>
+                <button id="copy-button">Copy JSON</button>
+                <code id="json-output"></code>
+        </pre>
+    </div>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

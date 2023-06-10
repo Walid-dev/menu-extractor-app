@@ -23,7 +23,9 @@ document.getElementById("fetch-button").addEventListener("click", () => {
           selectedMenu = menu.backend_name;
           document.getElementById("submit-button").disabled = false;
           menuListDiv.childNodes.forEach((node) => (node.style.fontWeight = "normal"));
+          menuListDiv.childNodes.forEach((node) => (node.style.color = "white"));
           menuElement.style.fontWeight = "bold";
+          menuElement.style.color = "#04f968";
         });
         menuListDiv.appendChild(menuElement);
       });
@@ -114,6 +116,9 @@ document.getElementById("submit-button").addEventListener("click", () => {
         })),
       };
 
+      let jsonOutputDiv = document.getElementById("json-output");
+      jsonOutputDiv.innerText = JSON.stringify(output, null, 2);
+
       // Call the download function with the JSON output
       download(headofficeId + ".json", JSON.stringify(output));
     })
@@ -134,3 +139,26 @@ function download(filename, text) {
 
   document.body.removeChild(element);
 }
+
+document.getElementById("copy-button").addEventListener("click", function () {
+  let jsonText = document.getElementById("json-output").innerText;
+
+  // Create a temporary textarea to hold the text to copy
+  let tempTextarea = document.createElement("textarea");
+  tempTextarea.value = jsonText;
+
+  // Append it to the body
+  document.body.appendChild(tempTextarea);
+
+  // Select the text
+  tempTextarea.select();
+
+  // Copy the text
+  document.execCommand("copy");
+
+  // Remove the textarea
+  document.body.removeChild(tempTextarea);
+
+  // Inform the user that the text has been copied
+  alert("JSON copied to clipboard");
+});
