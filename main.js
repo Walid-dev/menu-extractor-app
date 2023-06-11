@@ -44,7 +44,6 @@ document.getElementById("fetch-button").addEventListener("click", () => {
       appContainer.classList.remove("app-when-spinning");
     });
 });
-
 document.getElementById("submit-button").addEventListener("click", () => {
   let headofficeId = document.getElementById("headoffice-id").value;
   let resultDiv = document.getElementById("result");
@@ -138,8 +137,6 @@ document.getElementById("submit-button").addEventListener("click", () => {
       jsonOutputDiv.innerText = "";
       jsonOutputDiv.innerText = JSON.stringify(output, null, 2);
 
-      // Call the download function with the JSON output
-      download(headofficeId + ".json", JSON.stringify(output));
       // Show the JSON container
       document.getElementById("json-container").style.display = "block";
       // Hide the error message
@@ -154,22 +151,19 @@ document.getElementById("submit-button").addEventListener("click", () => {
     });
 });
 
-function download(filename, text) {
-  var element = document.createElement("a");
+function downloadMenu(filename, text) {
+  const element = document.createElement("a");
   element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
   element.setAttribute("download", filename);
-
   element.style.display = "none";
   document.body.appendChild(element);
-
   element.click();
-
   document.body.removeChild(element);
 }
 
 document.getElementById("copy-button").addEventListener("click", function () {
-  let jsonText = document.getElementById("json-output").innerText;
-  let tempTextarea = document.createElement("textarea");
+  const jsonText = document.getElementById("json-output").innerText;
+  const tempTextarea = document.createElement("textarea");
 
   tempTextarea.value = jsonText;
   document.body.appendChild(tempTextarea);
@@ -179,7 +173,7 @@ document.getElementById("copy-button").addEventListener("click", function () {
 
   document.body.removeChild(tempTextarea);
 
-  let message = document.createElement("div");
+  const message = document.createElement("div");
   message.id = "copy-message";
   message.textContent = "Menu copied to clipboard";
 
@@ -188,5 +182,27 @@ document.getElementById("copy-button").addEventListener("click", function () {
   // After 3 seconds, remove the message
   setTimeout(function () {
     message.parentNode.removeChild(message);
-  }, 3000);
+  }, 2000);
 });
+
+document.getElementById("download-button").addEventListener("click", function () {
+  const jsonText = document.getElementById("json-output").innerText;
+  const filename = document.getElementById("headoffice-id").value + ".json";
+  downloadMenu(filename, jsonText);
+
+  // Update the download button text
+  document.getElementById("download-button").textContent = "Menu Downloaded";
+  // Disable the download button after clicking
+  document.getElementById("download-button").disabled = true;
+});
+
+function downloadMenu(filename, text) {
+  const element = document.createElement("a");
+  element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+  element.setAttribute("download", filename);
+  element.style.display = "none";
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+

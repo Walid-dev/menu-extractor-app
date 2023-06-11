@@ -112,17 +112,28 @@ position: absolute;
     width: 100%;
 }
 
+#download-button {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    padding: 0.4em 0.7em;
+    font-size: 1em;
+    background-color: #1589b0;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
 #copy-message {
     position: absolute;
     top: 0%;
         left: 0%;
     width: 100%;
-    padding: 8px;
-    text-align: center;
-    background: #1589b0;
     color: #000;
-        background: lime;
-    font-size: 15px;
+        padding: 6px;
+    text-align: center;
+    background: rgba(0, 255, 0, 0.599);
+        font-size: 13px;
 }
 #json-output {}
 
@@ -156,4 +167,5 @@ position: absolute;
 
 .app-when-spinning {
     opacity: .2;
+    pointer-events: none;
 }
