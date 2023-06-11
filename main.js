@@ -1,5 +1,6 @@
 const fetchUrl = "https://www.mobi2go.com/api/1/headoffice/XXXX/menu?export";
 const prefix_to_delete = "";
+let appContainer = document.getElementById("app-container");
 
 let selectedMenu = null;
 
@@ -13,6 +14,7 @@ document.getElementById("fetch-button").addEventListener("click", () => {
   errorDiv.innerHTML = "";
 
   spinner.classList.add("spinner");
+  appContainer.classList.add("app-when-spinning");
 
   fetch(fetchUrl.replace("XXXX", headofficeId))
     .then((res) => {
@@ -33,11 +35,13 @@ document.getElementById("fetch-button").addEventListener("click", () => {
         });
         menuListDiv.appendChild(menuElement);
         spinner.classList.remove("spinner");
+        appContainer.classList.remove("app-when-spinning");
       });
     })
     .catch((error) => {
       errorDiv.innerHTML = `<p>Error: ${error}</p>`;
       spinner.classList.remove("spinner");
+      appContainer.classList.remove("app-when-spinning");
     });
 });
 
@@ -48,9 +52,14 @@ document.getElementById("submit-button").addEventListener("click", () => {
   let prefix_to_delete = document.getElementById("prefix-to-delete").value;
   resultDiv.innerHTML = "";
 
+  spinner.classList.add("spinner");
+  appContainer.classList.add("app-when-spinning");
+
   fetch(fetchUrl.replace("XXXX", headofficeId))
     .then((res) => {
       if (!res.ok) throw new Error(`API Request failed with status ${res.status}`);
+      spinner.classList.remove("spinner");
+      appContainer.classList.remove("app-when-spinning");
       return res.json();
     })
     .then((content) => {
@@ -77,7 +86,7 @@ document.getElementById("submit-button").addEventListener("click", () => {
       foundList.innerHTML += `<li>menus: ${content.menus.length}</li>`;
       foundList.innerHTML += `<li>categories: ${content.categories.length}</li>`;
       foundList.innerHTML += `<li>products: ${content.products.length}</li>`;
-      foundList.innerHTML += `<li>modifier_groups: ${content.modifier_groups.length}</li>`;
+      foundList.innerHTML += `<li>modifier groups: ${content.modifier_groups.length}</li>`;
       foundList.innerHTML += `<li>modifiers: ${content.modifiers.length}</li>`;
 
       // Create the Extracted list
@@ -86,7 +95,7 @@ document.getElementById("submit-button").addEventListener("click", () => {
       extractedList.innerHTML += `<li>menus: ${menus_to_keep.length}</li>`;
       extractedList.innerHTML += `<li>categories: ${category_names_to_keep.length}</li>`;
       extractedList.innerHTML += `<li>products: ${product_names_to_keep.length}</li>`;
-      extractedList.innerHTML += `<li>modifier_groups: ${modifier_group_names_to_keep.length}</li>`;
+      extractedList.innerHTML += `<li>modifier groups: ${modifier_group_names_to_keep.length}</li>`;
       extractedList.innerHTML += `<li>modifiers: ${modifier_names_to_keep.length}</li>`;
 
       // Append the lists to the result div
@@ -122,6 +131,9 @@ document.getElementById("submit-button").addEventListener("click", () => {
         })),
       };
 
+      spinner.classList.remove("spinner");
+      appContainer.classList.remove("app-when-spinning");
+
       let jsonOutputDiv = document.getElementById("json-output");
       jsonOutputDiv.innerText = "";
       jsonOutputDiv.innerText = JSON.stringify(output, null, 2);
@@ -137,6 +149,8 @@ document.getElementById("submit-button").addEventListener("click", () => {
       resultDiv.innerHTML = `<p>Error: ${error}</p>`;
       // Hide the JSON container if an error occurs
       document.getElementById("json-container").style.display = "none";
+      spinner.classList.remove("spinner");
+      appContainer.classList.remove("app-when-spinning");
     });
 });
 
@@ -155,33 +169,24 @@ function download(filename, text) {
 
 document.getElementById("copy-button").addEventListener("click", function () {
   let jsonText = document.getElementById("json-output").innerText;
-
-  // Create a temporary textarea to hold the text to copy
   let tempTextarea = document.createElement("textarea");
+
   tempTextarea.value = jsonText;
-
-  // Append it to the body
   document.body.appendChild(tempTextarea);
-
-  // Select the text
   tempTextarea.select();
 
-  // Copy the text
   document.execCommand("copy");
 
-  // Remove the textarea
   document.body.removeChild(tempTextarea);
 
-  // Create a message element
   let message = document.createElement("div");
   message.id = "copy-message";
-  message.textContent = "JSON copied to clipboard";
+  message.textContent = "Menu copied to clipboard";
 
-  // Append the message to the body
   document.body.appendChild(message);
 
   // After 3 seconds, remove the message
-  // setTimeout(function () {
-  //   message.parentNode.removeChild(message);
-  // }, 3000);
+  setTimeout(function () {
+    message.parentNode.removeChild(message);
+  }, 3000);
 });

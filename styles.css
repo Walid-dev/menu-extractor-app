@@ -6,6 +6,7 @@ font-family: 'Open Sans', sans-serif;
 
 .app-container {
     display: flex;
+    align-items: center;
             flex-wrap: wrap;
                 height: 95vh;
                 width: 99vw;
@@ -23,10 +24,13 @@ font-family: 'Open Sans', sans-serif;
     max-height: 95vh;
 }
 
+#fetch-interface {
+    align-self: flex-start;
+}
 #json-container {
     display: none;
     flex: 2 0 20%;
-    height: 100%;
+    height: 85%;
     overflow: auto;
     box-sizing: border-box;
     position: relative;
@@ -48,8 +52,8 @@ font-family: 'Open Sans', sans-serif;
 #headoffice-id,
 #prefix,
 #prefix-to-delete {
-margin: .6em 0;
-    padding: 0.5em;
+margin: .5em 0;
+    padding: 0.3em;
     font-size: 1em;
 }
 
@@ -85,9 +89,9 @@ list-style-type: none;
         margin: 8px;
         text-transform: capitalize;
     }
+
     
-    
-    #menu-list {
+#menu-list {
         cursor: pointer;
 max-height: 280px;
     overflow-y: scroll;
@@ -119,22 +123,24 @@ position: absolute;
 
 #copy-message {
     position: absolute;
-    left: 0;
+    top: 0%;
+        left: 0%;
     width: 100%;
-    padding: 4px;
+    padding: 8px;
     text-align: center;
     background: #1589b0;
-    color: white;
+    color: #000;
+        background: lime;
     font-size: 15px;
 }
 #json-output {}
-        
+
 .spinner {
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+        height: 40px;
     border-radius: 50%;
-    border: 2px solid #007fa7;
+    border: 2px solid #00e1ff;
     border-top-color: transparent;
     animation: spin 1s ease-in-out infinite;
     position: absolute;
@@ -150,4 +156,13 @@ position: absolute;
     100% {
         transform: rotate(360deg);
     }
+}
+#error {
+    color: red;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.app-when-spinning {
+    opacity: .2;
 }
