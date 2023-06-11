@@ -49,7 +49,6 @@ document.getElementById("submit-button").addEventListener("click", () => {
     })
     .then((content) => {
       const menus_to_copy = [selectedMenu];
-      // rest of the code as before
 
       const menus_to_keep = content.menus.filter((menu) => menus_to_copy.includes(menu.backend_name));
       const category_names_to_keep = _.union(...menus_to_keep.map((menu) => menu.categories));
@@ -123,9 +122,15 @@ document.getElementById("submit-button").addEventListener("click", () => {
 
       // Call the download function with the JSON output
       download(headofficeId + ".json", JSON.stringify(output));
+      // Show the JSON container
+      document.getElementById("json-container").style.display = "block";
+      // Hide the error message
+      document.getElementById("error").innerHTML = "";
     })
     .catch((error) => {
       resultDiv.innerHTML = `<p>Error: ${error}</p>`;
+      // Hide the JSON container if an error occurs
+      document.getElementById("json-container").style.display = "none";
     });
 });
 

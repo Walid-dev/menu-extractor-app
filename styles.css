@@ -70,6 +70,7 @@ font-family: 'Open Sans', sans-serif;
     font-weight: bold;
 }
 #json-container {
+    display: none;
     position: relative;
     background: #312d2dab;
         color: lime;
