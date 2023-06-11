@@ -93,4 +93,13 @@ font-family: 'Open Sans', sans-serif;
     width: 100%;
 }
 
-#json-output {}
+#copy-message {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 4px;
+    text-align: center;
+    background: #1589b0;
+    color: white;
+    font-size: 15px;
+}

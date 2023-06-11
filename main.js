@@ -161,6 +161,16 @@ document.getElementById("copy-button").addEventListener("click", function () {
   // Remove the textarea
   document.body.removeChild(tempTextarea);
 
-  // Inform the user that the text has been copied
-  alert("JSON copied to clipboard");
+  // Create a message element
+  let message = document.createElement("div");
+  message.id = "copy-message";
+  message.textContent = "JSON copied to clipboard";
+
+  // Append the message to the body
+  document.body.appendChild(message);
+
+  // After 3 seconds, remove the message
+  // setTimeout(function () {
+  //   message.parentNode.removeChild(message);
+  // }, 3000);
 });
