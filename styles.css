@@ -6,33 +6,67 @@ font-family: 'Open Sans', sans-serif;
 
 .app-container {
     display: flex;
-    color: #fff;
-    align-items: center;
-    min-width: 90%;
-    margin: 0 auto;
-    padding: 20px;
+            flex-wrap: wrap;
+                height: 95vh;
+                width: 99vw;
+                justify-content: space-between;
+                color: #fff;
 }
 
+#fetch-interface,
+#result,
+#json-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: 1em;
+    max-height: 95vh;
+}
+
+#json-container {
+    display: none;
+    flex: 2 0 20%;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    position: relative;
+    background: #312d2dab;
+    color: lime;
+    border-radius: 4px;
+}
+
+#result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 12%;
+        height: 100%;
+        overflow: auto;
+        margin: 1em;
+        box-sizing: border-box;
+}
 #headoffice-id,
 #prefix,
 #prefix-to-delete {
-    margin: .6em 0;
+margin: .6em 0;
     padding: 0.5em;
     font-size: 1em;
 }
 
 #submit-button {
-    padding: 0.5em 1em;
+padding: 0.5em 1em;
     margin: 1em 0;
     font-size: 1em;
-    background-color: #008CBA; /* Lovely blue */
+    background-color: #008CBA;
+        /* Lovely blue */
     color: white;
     border: none;
     cursor: pointer;
 }
 
+
 #fetch-button {
-    padding: 0.5em 1em;
+padding: 0.5em 1em;
     font-size: 1em;
     background-color: #18637c;
     /* Lovely blue */
@@ -41,20 +75,13 @@ font-family: 'Open Sans', sans-serif;
     cursor: pointer;
 }
 #submit-button:hover {
-    background-color: #007B9A; /* Darker blue on hover */
+background-color: #007B9A;
+    /* Darker blue on hover */
 }
-
-#result {
-    display: flex;
-    max-width: 40%;
-        flex-wrap: wrap;
-    }
-    
-    
 #result ul li {
-    list-style-type: none;
+list-style-type: none;
     background: #1589b0;
-        padding: 6px;
+    padding: 6px;
         margin: 8px;
         text-transform: capitalize;
     }
@@ -62,26 +89,23 @@ font-family: 'Open Sans', sans-serif;
     
     #menu-list {
         cursor: pointer;
+max-height: 280px;
+    overflow-y: scroll;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+    max-width: 360px;
 }
 
 #menu-list p:hover {
-    color: #008CBA;
-    font-size: 16px;
-    font-weight: bold;
-}
-#json-container {
-    position: relative;
-    background: #312d2dab;
-        color: lime;
-    padding: 30px 10px;
-    margin: 20px;
-        max-height: 35vh;
-    overflow-y: scroll;
-    border-radius: 4px;
+color: #008CBA;
+font-weight: bold;
 }
 
 #copy-button {
-    position: absolute;
+position: absolute;
     top: 0;
     left: 0;
     padding: 0.4em 0.7em;
@@ -102,4 +126,28 @@ font-family: 'Open Sans', sans-serif;
     background: #1589b0;
     color: white;
     font-size: 15px;
+}
+#json-output {}
+        
+.spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #007fa7;
+    border-top-color: transparent;
+    animation: spin 1s ease-in-out infinite;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

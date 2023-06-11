@@ -6,35 +6,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
   </head>
   <body>
+    <div id="spinner"></div>
     <div class="app-container">
       <div id="fetch-interface">
         <h1>MENU DUPLICATOR APP</h1>
-
-        <label for="headoffice-id">HEADOFFICE ID:</label><br />
-        <input type="text" id="headoffice-id" name="headoffice-id" /><br />
-
-        <label for="prefix">Add Prefix:</label><br />
-        <input type="text" id="prefix" name="prefix" value="[New] " /><br />
-
-        <label for="prefix-to-delete">Remove Prefix:</label><br>
-        <input type="text" id="prefix-to-delete" name="prefix-to-delete"><br>
-
-
-        <button id="fetch-button">Fetch Menus</button>
-
-        <div id="error"></div>
+        <div id="interface-box">
+          <label for="headoffice-id">HEADOFFICE ID:</label><br />
+          <input type="text" id="headoffice-id" name="headoffice-id" /><br />
+          <label for="prefix">Add Prefix:</label><br />
+          <input type="text" id="prefix" name="prefix" value="[New] " /><br />
+          <label for="prefix-to-delete">Remove Prefix:</label><br>
+          <input type="text" id="prefix-to-delete" name="prefix-to-delete"><br>
+          <button id="fetch-button">Fetch Menus</button>
+        </div>
+        <div id="error">
+        </div>
 
         <div id="menu-list"></div>
 
         <button id="submit-button" disabled>Duplicate Selected Menu</button>
       </div>
       <div id="result"></div>
-    </div>
-    <div id="json-container">
-      <pre>
-                <button id="copy-button">Copy JSON</button>
-                <code id="json-output"></code>
-        </pre>
+      <div id="json-container">
+        <pre>
+                  <button id="copy-button">Copy JSON</button>
+                  <code id="json-output"></code>
+          </pre>
+      </div>
     </div>
     <script src="main.js"></script>
   </body>
