@@ -9,22 +9,24 @@
     <div class="" id="spinner"></div>
     <div id="app-container" class="app-container">
       <div id="fetch-interface">
-        <h1>MENU DUPLICATOR APP</h1>
+        <div class="header">
+          <a href="https://www.mobi2go.com/admin/"><img class="logo" width="90" alt="Mobi" src="https://www.mobi2go.com/admin/images/logos/mobi-logo-light-blue.svg"></a>
+          <h2>MENU DUPLICATOR APP</h2>
+        </div>
         <div id="interface-box">
           <label for="headoffice-id">HEADOFFICE ID:</label><br />
           <input type="text" id="headoffice-id" name="headoffice-id" /><br />
           <label for="prefix">Add Prefix:</label><br />
-          <input type="text" id="prefix" name="prefix" value="[New] " /><br />
+          <input type="text" id="prefix" name="prefix" value="[New]" /><br />
           <label for="prefix-to-delete">Remove Prefix:</label><br>
           <input type="text" id="prefix-to-delete" name="prefix-to-delete"><br>
-          <button id="fetch-button">Fetch Menus</button>
         </div>
         <div id="error">
         </div>
 
         <div id="menu-list"></div>
-
-        <button id="submit-button" disabled>Duplicate Selected Menu</button>
+        <button id="fetch-button">Fetch Menus</button>  
+        <button id="submit-button" disabled>Duplicate Menu</button>
       </div>
       <div id="result"></div>
       <div id="json-container">

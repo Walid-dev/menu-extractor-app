@@ -43,7 +43,6 @@ font-family: 'Open Sans', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1 0 12%;
         height: 100%;
         overflow: auto;
         margin: 1em;
@@ -57,31 +56,22 @@ margin: .5em 0;
     font-size: 1em;
 }
 
+#fetch-button,
 #submit-button {
+    margin-top: 12px;
 padding: 0.5em 1em;
-    margin: 1em 0;
     font-size: 1em;
     background-color: #008CBA;
-        /* Lovely blue */
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-
-#fetch-button {
-padding: 0.5em 1em;
-    font-size: 1em;
-    background-color: #18637c;
     /* Lovely blue */
     color: white;
     border: none;
     cursor: pointer;
 }
+#fetch-button:hover,
 #submit-button:hover {
-background-color: #007B9A;
-    /* Darker blue on hover */
+    background-color: #18637c;
 }
+
 #result ul li {
 list-style-type: none;
     background: #1589b0;
@@ -95,7 +85,7 @@ list-style-type: none;
         cursor: pointer;
 max-height: 280px;
     overflow-y: scroll;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
     padding: 8px;
     border-radius: 4px;
@@ -104,7 +94,7 @@ max-height: 280px;
 }
 
 #menu-list p:hover {
-color: #008CBA;
+color: lime;
 font-weight: bold;
 }
 
