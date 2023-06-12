@@ -22,6 +22,7 @@ font-family: 'Open Sans', sans-serif;
     justify-content: start;
     margin: 1em;
     max-height: 95vh;
+    padding: 30px 10px;
 }
 
 #fetch-interface {
@@ -99,30 +100,35 @@ color: lime;
 font-weight: bold;
 }
 
-#copy-button {
-position: absolute;
+#copy-download-btn-container {
+    position: absolute;
     top: 0;
-    left: 0;
+        left: 0;
+        display: flex;
+            width: 100%;
+        }
+        
+        #copy-button,
+        #download-button {
+            width: 50%;
     padding: 0.4em 0.7em;
     font-size: 1em;
-    background-color: #1589b096;
     color: white;
     border: none;
     cursor: pointer;
     width: 100%;
 }
 
+#copy-button {
+    background-color: #008CBA;
+}
 #download-button {
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    padding: 0.4em 0.7em;
-    font-size: 1em;
     background-color: #1589b096;
-    color: white;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+}
+
+#copy-button:hover,
+#download-button:hover {
+    background-color: #18637c;
 }
 #copy-message {
     position: absolute;
@@ -135,7 +141,6 @@ position: absolute;
     background: rgba(0, 255, 0, 0.599);
         font-size: 13px;
 }
-#json-output {}
 
 .spinner {
     display: inline-block;
