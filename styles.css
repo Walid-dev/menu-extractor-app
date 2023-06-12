@@ -8,7 +8,7 @@ font-family: 'Open Sans', sans-serif;
     display: flex;
     align-items: center;
             flex-wrap: wrap;
-                height: 95vh;
+                max-height: 95vh;
                 width: 99vw;
                 justify-content: space-between;
                 color: #fff;
@@ -22,7 +22,6 @@ font-family: 'Open Sans', sans-serif;
     justify-content: start;
     margin: 1em;
     max-height: 95vh;
-    padding: 30px 10px;
 }
 
 #fetch-interface {
@@ -38,6 +37,7 @@ font-family: 'Open Sans', sans-serif;
     background: #312d2dab;
     color: lime;
     border-radius: 4px;
+    padding: 16px 6px;
 }
 
 #result {
@@ -86,12 +86,11 @@ list-style-type: none;
 #menu-list {
         cursor: pointer;
 max-height: 280px;
+margin-bottom: 18px;
     overflow-y: scroll;
     font-size: 14px;
     font-weight: bold;
-    padding: 8px;
     border-radius: 4px;
-    margin-top: 8px;
     max-width: 360px;
 }
 
