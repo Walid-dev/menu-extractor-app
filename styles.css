@@ -30,14 +30,14 @@ font-family: 'Open Sans', sans-serif;
 #json-container {
     display: none;
     flex: 2 0 20%;
-    height: 85%;
+    max-height: 700px;
     overflow: auto;
     box-sizing: border-box;
     position: relative;
     background: #312d2dab;
     color: lime;
     border-radius: 4px;
-    padding: 16px 6px;
+    padding: 30px 6px;
 }
 
 #result {
