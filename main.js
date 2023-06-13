@@ -7,6 +7,7 @@ let selectedMenu = null;
 document.getElementById("fetch-button").addEventListener("click", () => {
   let headofficeId = document.getElementById("headoffice-id").value;
   let menuListDiv = document.getElementById("menu-list");
+  let menuListTitle = document.getElementById("menu-list-title");
   let errorDiv = document.getElementById("error");
   let spinner = document.getElementById("spinner");
 
@@ -22,6 +23,9 @@ document.getElementById("fetch-button").addEventListener("click", () => {
       return res.json();
     })
     .then((content) => {
+      menuListTitle.innerHTML = "Select a menu";
+      menuListTitle.classList.add("menu-list-title");
+      menuListDiv.appendChild(menuListTitle);
       content.menus.forEach((menu, i) => {
         let menuElement = document.createElement("p");
         menuElement.textContent = menu.backend_name;

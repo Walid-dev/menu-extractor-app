@@ -22,13 +22,15 @@
             <input type="text" id="prefix" name="prefix" value="[New]" /><br />
             <label for="prefix-to-delete">Remove Prefix:</label><br>
             <input type="text" id="prefix-to-delete" name="prefix-to-delete"><br>
+            <button id="fetch-button">Search Menus</button>  
+            <button id="submit-button" disabled>Extract Menu</button>
           </div>
           <div id="error">
           </div>
   
-          <div id="menu-list"></div>
-          <button id="fetch-button">Search Menus</button>  
-          <button id="submit-button" disabled>Extract Menu</button>
+          <div id="menu-list">
+            <h3 id="menu-list-title"></h3>
+          </div>
         </div>
         <div id="result"></div>
         <div id="json-container">
